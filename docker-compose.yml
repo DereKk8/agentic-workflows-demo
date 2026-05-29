@@ -15,12 +15,12 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/agentic_helpdesk
-      MODO_AGENTE: mock
-      PROVEEDOR_LLM: groq
-      GROQ_API_KEY: ""
-      OPENROUTER_API_KEY: ""
-      GEMINI_API_KEY: ""
+      DATABASE_URL: ${DATABASE_URL:-postgresql+psycopg2://postgres:postgres@db:5432/agentic_helpdesk}
+      MODO_AGENTE: ${MODO_AGENTE:-mock}
+      PROVEEDOR_LLM: ${PROVEEDOR_LLM:-groq}
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      OPENROUTER_API_KEY: ${OPENROUTER_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
     ports:
       - "8000:8000"
 

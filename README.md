@@ -9,6 +9,22 @@ Prototipo académico con FastAPI + PostgreSQL que demuestra un flujo agéntico s
 
 ## Ejecución rápida
 
+1) Crear archivo local de variables (no se versiona):
+
+```bash
+cp .env.example .env
+```
+
+2) Editar `.env` y configurar al menos:
+
+```env
+MODO_AGENTE=real
+PROVEEDOR_LLM=groq
+GROQ_API_KEY=tu_api_key_aqui
+```
+
+3) Levantar el proyecto:
+
 ```bash
 docker compose up --build
 ```
@@ -29,6 +45,11 @@ docker compose down
 - `GROQ_API_KEY`
 - `OPENROUTER_API_KEY`
 - `GEMINI_API_KEY`
+
+Notas de seguridad:
+- `.env` está ignorado por Git en `.gitignore`.
+- No hardcodear API keys en código, `docker-compose.yml`, ni en commits.
+- Compartir solo `.env.example` como plantilla sin secretos.
 
 ## Endpoints principales
 

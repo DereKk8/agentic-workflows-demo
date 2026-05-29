@@ -7,31 +7,67 @@
   <link rel="stylesheet" href="/static/styles.css" />
 </head>
 <body>
-  <main class="container">
-    <header>
+  <main class="dashboard">
+    <header class="hero">
+      <p class="eyebrow">MVP académico · Orquestación agéntica</p>
       <h1>Sistema Agéntico de Mesa de Ayuda Académica</h1>
-      <p>Prototipo MVP con FastAPI, CrewAI y LangChain</p>
+      <p class="hero-copy">
+        Visualiza tickets, consulta conocimiento y ejecuta el workflow completo de análisis, búsqueda y propuesta de respuesta.
+      </p>
     </header>
 
-    <section class="panel">
-      <h2>Tickets</h2>
-      <button id="refreshTickets">Actualizar</button>
-      <ul id="tickets"></ul>
+    <section class="panel panel-workflow">
+      <div class="panel-head">
+        <h2>Ejecución de workflow</h2>
+        <button id="runWorkflow" class="btn btn-primary" disabled>Ejecutar workflow</button>
+      </div>
+      <div id="workflowStatus" class="status status-idle">Seleccione un ticket para ejecutar.</div>
+      <ol id="workflowSteps" class="workflow-steps" aria-live="polite"></ol>
+      <section id="respuestaPanel" class="agent-response" aria-live="polite">
+        <h3 class="response-title">Respuesta del agente al ticket</h3>
+        <p id="respuestaEmpty" class="panel-note">La respuesta del agente aparecerá aquí después de ejecutar el workflow.</p>
+        <div id="respuestaBody">
+          <div class="response-meta">
+            <span id="metaClasificacion" class="pill">Clasificación: -</span>
+            <span id="metaEscalamiento" class="pill">Escalamiento: -</span>
+            <span id="metaModo" class="pill">Modo: -</span>
+            <span id="metaProveedor" class="pill">Proveedor: -</span>
+            <span id="metaArticulos" class="pill">Artículos: -</span>
+          </div>
+          <h3>Respuesta sugerida</h3>
+          <p id="respuestaTexto" class="response-text">Sin ejecución todavía.</p>
+          <h3>Razón de escalamiento</h3>
+          <p id="respuestaRazon" class="response-text">Sin ejecución todavía.</p>
+        </div>
+      </section>
+      <pre id="resultado" class="result-box"></pre>
     </section>
 
-    <section class="panel">
-      <h2>Artículos de conocimiento</h2>
-      <button id="refreshArticulos">Actualizar</button>
-      <ul id="articulos"></ul>
-    </section>
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Tickets</h2>
+          <button id="refreshTickets" class="btn">Actualizar</button>
+        </div>
+        <p class="panel-note">Seleccione un ticket para habilitar la ejecución y consultar su historial.</p>
+        <ul id="tickets" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Artículos de conocimiento</h2>
+          <button id="refreshArticulos" class="btn">Actualizar</button>
+        </div>
+        <ul id="articulos" class="list"></ul>
+      </section>
+    </div>
 
     <section class="panel">
-      <h2>Ejecución de workflow</h2>
-      <div id="workflowStatus">Seleccione un ticket para ejecutar.</div>
-      <button id="runWorkflow" disabled>Ejecutar workflow</button>
-      <pre id="resultado"></pre>
-      <h3>Historial del ticket</h3>
-      <ul id="historial"></ul>
+      <div class="panel-head">
+        <h2>Historial del ticket</h2>
+        <p id="historialHint" class="panel-note">Sin ticket seleccionado.</p>
+      </div>
+      <ul id="historial" class="list history-list"></ul>
     </section>
   </main>
   <script src="/static/app.js"></script>
