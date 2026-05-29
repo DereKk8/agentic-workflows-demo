@@ -1,0 +1,44 @@
+:root {
+  --bg: #f4f7f1;
+  --ink: #1f2a1f;
+  --card: #ffffff;
+  --accent: #3f7d58;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: radial-gradient(circle at top left, #e8f5e9 0%, var(--bg) 65%);
+  color: var(--ink);
+}
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  gap: 16px;
+}
+header h1 { margin-bottom: 4px; }
+.panel {
+  background: var(--card);
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+button {
+  border: none;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+ul { padding-left: 18px; }
+pre {
+  white-space: pre-wrap;
+  background: #f2f7f2;
+  border-radius: 8px;
+  padding: 12px;
+}

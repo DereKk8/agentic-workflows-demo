@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: agentic_helpdesk
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/agentic_helpdesk
+      MODO_AGENTE: mock
+      PROVEEDOR_LLM: groq
+      GROQ_API_KEY: ""
+      OPENROUTER_API_KEY: ""
+      GEMINI_API_KEY: ""
+    ports:
+      - "8000:8000"
+
+volumes:
+  postgres_data:
+

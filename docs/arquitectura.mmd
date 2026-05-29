@@ -1,0 +1,13 @@
+flowchart TD
+    U[Usuario demo] --> D[Dashboard estático]
+    D --> API[FastAPI]
+    API --> WF[Workflow agéntico]
+    API --> DB[(PostgreSQL)]
+    WF --> C1[Clasificador determinista]
+    WF --> C2[Buscador de conocimiento determinista]
+    WF --> C3[Redactor mock/LLM]
+    WF --> C4[Supervisor mock/LLM]
+    C3 --> LC[LangChain]
+    C4 --> LC
+    WF --> CR[CrewAI]
+

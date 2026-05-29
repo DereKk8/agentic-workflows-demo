@@ -15,3 +15,11 @@ venv/
 .venv/
 dist/
 build/
+
+## Plan artifacts
+plan-proyecto-agentica.md
+prd.md
+AGENTS.md
+
+.agents/*
+.codex/*

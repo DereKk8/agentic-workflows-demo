@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema Agéntico de Mesa de Ayuda Académica</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Sistema Agéntico de Mesa de Ayuda Académica</h1>
+      <p>Prototipo MVP con FastAPI, CrewAI y LangChain</p>
+    </header>
+
+    <section class="panel">
+      <h2>Tickets</h2>
+      <button id="refreshTickets">Actualizar</button>
+      <ul id="tickets"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Artículos de conocimiento</h2>
+      <button id="refreshArticulos">Actualizar</button>
+      <ul id="articulos"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Ejecución de workflow</h2>
+      <div id="workflowStatus">Seleccione un ticket para ejecutar.</div>
+      <button id="runWorkflow" disabled>Ejecutar workflow</button>
+      <pre id="resultado"></pre>
+      <h3>Historial del ticket</h3>
+      <ul id="historial"></ul>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "info": {
+    "name": "Sistema Agéntico Mesa de Ayuda Académica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Colección de validación manual del MVP."
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/health"
+      }
+    },
+    {
+      "name": "Seed",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/seed"
+      }
+    },
+    {
+      "name": "Listar tickets",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/tickets"
+      }
+    },
+    {
+      "name": "Crear ticket",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"titulo\":\"Consulta de inscripción\",\"descripcion\":\"No aparece mi curso en el sistema\",\"curso\":\"Arquitectura\",\"estado\":\"abierto\"}"
+        },
+        "url": "{{base_url}}/api/tickets"
+      }
+    },
+    {
+      "name": "Listar artículos",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/articulos"
+      }
+    },
+    {
+      "name": "Ejecutar workflow ticket 1",
+      "request": {
+        "method": "POST",
+        "url": "{{base_url}}/api/workflow/ejecutar/1"
+      }
+    },
+    {
+      "name": "Ver ejecuciones ticket 1",
+      "request": {
+        "method": "GET",
+        "url": "{{base_url}}/api/tickets/1/ejecuciones"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8000"
+    }
+  ]
+}

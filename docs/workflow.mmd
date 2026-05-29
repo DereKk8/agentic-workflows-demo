@@ -1,0 +1,17 @@
+sequenceDiagram
+    participant UI as Dashboard
+    participant API as FastAPI
+    participant DB as PostgreSQL
+    UI->>API: POST /api/workflow/ejecutar/{ticket_id}
+    API->>DB: Leer Ticket
+    API->>API: Clasificar (determinista)
+    API->>DB: Buscar artículos relevantes
+    alt modo mock
+      API->>API: Redacción plantilla + supervisión reglas
+    else modo real
+      API->>API: CrewAI define tareas/agentes
+      API->>API: LangChain invoca proveedor LLM
+    end
+    API->>DB: Guardar EjecucionAgente
+    API-->>UI: Resultado final + pasos + escalamiento
+
