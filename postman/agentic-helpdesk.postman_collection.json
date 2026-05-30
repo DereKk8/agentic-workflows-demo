@@ -1,69 +1,128 @@
 {
-  "info": {
-    "name": "Sistema Agéntico Mesa de Ayuda Académica",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": "Colección de validación manual del MVP."
-  },
-  "item": [
-    {
-      "name": "Health",
-      "request": {
-        "method": "GET",
-        "url": "{{base_url}}/api/health"
-      }
+    "info": {
+        "name": "Sistema Agéntico Mesa de Ayuda Académica",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "description": "Colección de validación manual del MVP."
     },
-    {
-      "name": "Seed",
-      "request": {
-        "method": "POST",
-        "url": "{{base_url}}/api/seed"
-      }
-    },
-    {
-      "name": "Listar tickets",
-      "request": {
-        "method": "GET",
-        "url": "{{base_url}}/api/tickets"
-      }
-    },
-    {
-      "name": "Crear ticket",
-      "request": {
-        "method": "POST",
-        "header": [{ "key": "Content-Type", "value": "application/json" }],
-        "body": {
-          "mode": "raw",
-          "raw": "{\"titulo\":\"Consulta de inscripción\",\"descripcion\":\"No aparece mi curso en el sistema\",\"curso\":\"Arquitectura\",\"estado\":\"abierto\"}"
+    "item": [
+        {
+            "name": "Health",
+            "request": {
+                "method": "GET",
+                "url": "{{base_url}}/api/health"
+            }
         },
-        "url": "{{base_url}}/api/tickets"
-      }
-    },
-    {
-      "name": "Listar artículos",
-      "request": {
-        "method": "GET",
-        "url": "{{base_url}}/api/articulos"
-      }
-    },
-    {
-      "name": "Ejecutar workflow ticket 1",
-      "request": {
-        "method": "POST",
-        "url": "{{base_url}}/api/workflow/ejecutar/1"
-      }
-    },
-    {
-      "name": "Ver ejecuciones ticket 1",
-      "request": {
-        "method": "GET",
-        "url": "{{base_url}}/api/tickets/1/ejecuciones"
-      }
-    }
-  ],
-  "variable": [
-    {
-      "key": "base_url",
-      "value": "http://localhost:8000"
-    }
-  ]
+        {
+            "name": "Seed",
+            "request": {
+                "method": "POST",
+                "url": "{{base_url}}/api/seed"
+            }
+        },
+        {
+            "name": "Listar tickets",
+            "request": {
+                "method": "GET",
+                "url": "{{base_url}}/api/tickets"
+            }
+        },
+        {
+            "name": "Crear ticket",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"titulo\":\"Consulta de inscripción\",\"descripcion\":\"No aparece mi curso en el sistema\",\"curso\":\"Arquitectura\",\"estado\":\"abierto\"}"
+                },
+                "url": "{{base_url}}/api/tickets"
+            }
+        },
+        {
+            "name": "Actualizar ticket",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"titulo\":\"Consulta de inscripción\",\"descripcion\":\"No aparece mi curso en el sistema (Actualizado)\",\"curso\":\"Arquitectura\",\"estado\":\"en_progreso\"}"
+                },
+                "url": "{{base_url}}/api/tickets/1"
+            }
+        },
+        {
+            "name": "Eliminar ticket",
+            "request": {
+                "method": "DELETE",
+                "url": "{{base_url}}/api/tickets/1"
+            }
+        },
+        {
+            "name": "Listar artículos",
+            "request": {
+                "method": "GET",
+                "url": "{{base_url}}/api/articulos"
+            }
+        },
+        {
+            "name": "Crear artículo",
+            "request": {
+                "method": "POST",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"titulo\":\"Resolución de fallos de inscripción\",\"contenido\":\"Póngase en contacto con secretaría si su curso no aparece.\",\"categoria\":\"Inscripciones\",\"etiquetas\":\"inscripciones, error, curso\"}"
+                },
+                "url": "{{base_url}}/api/articulos"
+            }
+        },
+        {
+            "name": "Actualizar artículo",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    { "key": "Content-Type", "value": "application/json" }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\"titulo\":\"Resolución de fallos de inscripción\",\"contenido\":\"Póngase en contacto con secretaría si su curso no aparece. Adjunte su ID de estudiante.\",\"categoria\":\"Inscripciones\",\"etiquetas\":\"inscripciones, error, curso, resolucion\"}"
+                },
+                "url": "{{base_url}}/api/articulos/1"
+            }
+        },
+        {
+            "name": "Eliminar artículo",
+            "request": {
+                "method": "DELETE",
+                "url": "{{base_url}}/api/articulos/1"
+            }
+        },
+        {
+            "name": "Ejecutar workflow ticket 1",
+            "request": {
+                "method": "POST",
+                "url": "{{base_url}}/api/workflow/ejecutar/1",
+                "description": "Si el entorno está configurado en modo_agente=\"real\", procesará la lógica multi-agente con CrewAI y los LLMs seleccionados; y si falla o está en modo_agente=\"mock\", ejecutará de forma segura el algoritmo determinista de fallback (HTTP 200)."
+            }
+        },
+        {
+            "name": "Ver ejecuciones ticket 1",
+            "request": {
+                "method": "GET",
+                "url": "{{base_url}}/api/tickets/1/ejecuciones"
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        }
+    ]
 }
